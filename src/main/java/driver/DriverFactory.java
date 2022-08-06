@@ -6,6 +6,9 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.util.Properties;
 
 public class DriverFactory {
 
@@ -21,9 +24,8 @@ public class DriverFactory {
     private static WebDriver createDriver(){
         WebDriver driver = null;
 
-        String browserType = "chrome";
 
-        switch (browserType){
+        switch (getBrowserType()){
             case "chrome" -> {
                 //Since driver is in the project, we are making sure that it is going to run in any windows machine that has Chrome Version 104.
                 System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "/src/main/java/driver/drivers/chromedriver.exe");
@@ -44,6 +46,21 @@ public class DriverFactory {
         driver.manage().window().maximize();
         return driver;
 
+    }
+    //reading the browser value from config.properties to set the browser
+    private static String getBrowserType() {
+        String browserType = null;
+
+        try{
+        Properties properties = new Properties();
+        FileInputStream file = new FileInputStream(System.getProperty("user.dir") + "/src/main/java/properties/config.properties");
+        properties.load(file);
+        browserType = properties.getProperty("browser").toLowerCase().trim();
+
+    } catch (IOException ex){
+            System.out.println(ex.getMessage());
+        }
+        return browserType;
     }
     public static void cleanupDriver(){
         webDriver.get().quit();

@@ -7,7 +7,7 @@ import static driver.DriverFactory.getDriver;
 
 public class Hooks {
 
-
+    //Calling our static methods @DriverFactory
     @Before
     public void setup(){
         getDriver();
