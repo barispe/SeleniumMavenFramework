@@ -8,33 +8,19 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.openqa.selenium.By;
-import org.openqa.selenium.PageLoadStrategy;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
+
 import org.testng.Assert;
 
-public class Contact_Us_Steps {
-    private WebDriver driver;
+import static driver.DriverFactory.getDriver;
 
-    //Hook that is used for setting up the environment before initial scenario step, executes before every scenario.
-    @Before("@contact-us")
-    public void setup(){
-        //Since driver is in the project, we are making sure that it is going to run in any windows machine that has Chrome Version 104.
-        System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "/src/main/java/drivers/chromedriver.exe");
-        ChromeOptions chromeOptions = new ChromeOptions();
-        //choosing normal so Selenium WebDriver will wait for the entire page is loaded. We can use waitUntil between steps as well yet this is more efficient.
-        chromeOptions.setPageLoadStrategy(PageLoadStrategy.NORMAL);
-        driver = new ChromeDriver(chromeOptions);
-        //open window on full screen
-        driver.manage().window().maximize();
-    }
-//Hook thats used for after scenario settings.
-    @After("@contact-us")
-    public void tearDown(){
-        driver.quit();
-    }
+
+public class Contact_Us_Steps {
+private WebDriver driver = getDriver();
+
+
     public String generateRandomNumber(int length){
         return RandomStringUtils.randomNumeric(length);
     }
