@@ -21,6 +21,7 @@ Cucumber ver. 7.0.0
 Maven ver.14
 
 Parallel testing max threadCount is set to 5 by default, if you encounter any problems you can change it from testng.xml.
+
 CucumberOptions tag is empty by default, you can add a tag at MainRunner.java and start running your features.
 
 ***Happy Testing!***
