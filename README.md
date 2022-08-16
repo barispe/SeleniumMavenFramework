@@ -6,11 +6,11 @@
 
 *Maven Framework made with using Selenium, Cucumber on Java.*
 
- - [x] Jenkins Implementation with testng and surefire.
- - [x] Paralel testing
- - [x] Cucumber Reports with screenshots on failed steps
- - [x] Page Object Model
- - [x] Utils with Global Variables such as url and default timeout
+ - ✅ Jenkins Implementation with testng and surefire.
+ - ✅ Paralel testing
+ - ✅ Cucumber Reports with screenshots on failed steps
+ - ✅ Page Object Model
+ - ✅ Utils with Global Variables such as url and default timeout
 
 # Setup
 
